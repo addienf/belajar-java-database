@@ -49,16 +49,15 @@ public class HikariCPTest {
         try {
             HikariDataSource dataSource = new HikariDataSource(config);
             Connection con = dataSource.getConnection();
-            System.out.println("Sukses Mengambil Koneksi!!");
-
             con.close();
-            System.out.println("Sukses Menutup Koneksi!!");
-
             dataSource.close();
-            System.out.println("Sukses Menutup Pool!!");
         }catch (SQLException e){
             Assertions.fail(e);
         }
+    }
 
+    @Test
+    void testUtil() throws SQLException{
+        Connection con = ConnectionUtil.getDataSource().getConnection();
     }
 }
